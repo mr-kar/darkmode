@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet"/>
+    <title>Nyoba nyoba</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="HOME">HOME</a>
+            <a onclick="darkMode()" id="MODE">MODE</a>
+        </nav>
+        <h1>DARKMODE EXPERIENCE</h1>
+        <p class="info"id="info"></p>
+    </div>
+    <!-- script -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById("info");
+        let MODE = document.getElementById("MODE");
+        let HOME = document.getElementById("HOME");   
+        const darklimit = 5;
+        let darkcounter = 0;
+        let darkremainingleft;
+        
+        function darkMode() {
+            if(darkremainingleft == 0){
+                info.textContent = "darkmode habis"
+                MODE.style.display = "none"
+                HOME.textContent ="RESTART"
+            return;
+            }
+            darkcounter += 1;
+            darkremainingleft = darklimit -darkcounter;
+
+            //render ke infow element
+            info.textContent = `mau habis bang ${darkcounter}x, tersisa ${darkremainingleft}`
+
+            body.classList.toggle("dark");
+        }
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
